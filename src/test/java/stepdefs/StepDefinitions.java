@@ -24,7 +24,6 @@ public class StepDefinitions extends BasePage {
 
     @Given("I go to google.com")
     public void i_go_to_google_com() {
-        // Write code here that turns the phrase above into concrete actions
         browser.openWebPage(URL);
     }
 
