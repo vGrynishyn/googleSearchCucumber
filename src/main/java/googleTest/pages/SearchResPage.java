@@ -2,6 +2,7 @@ package googleTest.pages;
 
 import googleTest.BasePage;
 import googleTest.utils.LogInformation;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -23,6 +24,7 @@ public class SearchResPage extends BasePage {
     /**
      * Search for webelements of search result title for click
      */
+    @Step()
     private ArrayList<WebElement> getSearcResultWebElements(){
         ArrayList<WebElement> webElements = new ArrayList<>();
         for (WebElement element: resultWebElement){
@@ -34,10 +36,12 @@ public class SearchResPage extends BasePage {
     /**
      * Click needed position on result page
      */
+    @Step()
     public void clickNeededNumOfResultLinks(int position){
         getSearcResultWebElements().get(position).click();
     }
 
+    @Step()
     public void clickFirstSearchResultLinks(){
         getSearcResultWebElements().get(0).click();
     }
@@ -45,6 +49,7 @@ public class SearchResPage extends BasePage {
     /**
      * Search for the expected template (domain name) in results search link on numOfSearchPage  googleTest.pages
      */
+    @Step()
     public String getSearchLinkFromResults(String expectedDomainName, int numOfSearchPage){
         LogInformation.info(String.format("Search %s link on search results googleTest.pages(page: 1-5).",expectedDomainName));
         while(Integer.valueOf(numberOfCurrentPage.getText()) < numOfSearchPage)
@@ -61,6 +66,7 @@ public class SearchResPage extends BasePage {
     /**
      * Click next page
      */
+    @Step()
     private void clickToNextPage(){
         LogInformation.info("Click to next page.");
         browser.scrollToElement(nextPageButton);
@@ -71,6 +77,7 @@ public class SearchResPage extends BasePage {
     /**
      * Search for result links
      */
+    @Step()
     public ArrayList<String> getResultLinks() {
         LogInformation.info("Get searched links.");
         ArrayList<String> links = new ArrayList();
