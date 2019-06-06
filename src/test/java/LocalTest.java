@@ -1,9 +1,6 @@
-
 import googleTest.BasePage;
 import googleTest.pages.HomePage;
-import googleTest.utils.Browser;
 import googleTest.utils.LogInformation;
-
 import googleTest.utils.TestListener;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -13,11 +10,6 @@ import java.util.Collection;
 
 @Listeners({TestListener.class})
 public class LocalTest extends BasePage {
-
-    private HomePage homePage;
-    private static final String URL = "https://www.google.com.ua/";
-    private static final String PATTERN = "automation";
-    private static final String EXPECTED_DOMAIN_NAME = "testautomationday.com";
 
     @AfterMethod
     public void afterTest() {

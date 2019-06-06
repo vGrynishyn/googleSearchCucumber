@@ -1,11 +1,9 @@
 package stepdefs;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import googleTest.BasePage;
-import googleTest.pages.HomePage;
 import googleTest.pages.SearchResPage;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -13,11 +11,8 @@ import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
 public class StepDefinitions extends BasePage {
-    private HomePage homePage = new HomePage();
+
     private SearchResPage searchPage = new SearchResPage();
-    private static final String URL = "https://www.google.com.ua/";
-    private static final String PATTERN = "automation";
-    private static final String EXPECTED_DOMAIN_NAME = "home-assistan";
 
     @FindBy(css = "input[name=q]")
     private WebElement searchInput;
@@ -27,7 +22,7 @@ public class StepDefinitions extends BasePage {
         browser.openWebPage(URL);
     }
 
-    @Then("I search word 'automation'")
+    @When("I search word 'automation'")
     public void i_search_word_automation() {
         searchInput.sendKeys(PATTERN + Keys.ENTER);
     }
