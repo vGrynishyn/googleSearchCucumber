@@ -13,8 +13,6 @@ public class HomePage extends BasePage {
 
     /**
      * Open webpage
-     * @param url
-     * @return
      */
     public HomePage openWebPage(String url){
         LogInformation.info(String.format("Open '%s' address", url));
@@ -27,8 +25,6 @@ public class HomePage extends BasePage {
 
     /**
      * Search for specified pattern
-     * @param pattern
-     * @return
      */
     public SearchResPage searchPattern(String pattern){
         LogInformation.info(String.format("Search for '%s' pattern", pattern));

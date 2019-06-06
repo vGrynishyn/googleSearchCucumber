@@ -4,8 +4,7 @@ import org.apache.log4j.Logger;
 
 public class LogInformation extends Logger {
 
-    protected LogInformation(String name)
-    {
+    protected LogInformation(String name) {
         super(name);
     }
 
@@ -27,7 +26,7 @@ public class LogInformation extends Logger {
         log.error(message);
     }
 
-    public static void info(String message){
+    public static void info(String message) {
         String name = getCallerClassName();
         Logger log = LogInformation.getLogger(name);
         log.info(message);

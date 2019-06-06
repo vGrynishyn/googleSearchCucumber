@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 
 public class SearchResPage extends BasePage {
 
-//    private Browser browser = new Browser();
     @FindBy(className = "cur")
     private WebElement numberOfCurrentPage;
     @FindBy(xpath = "//*[@class='r']/a[@href]")
@@ -34,7 +33,6 @@ public class SearchResPage extends BasePage {
 
     /**
      * Click needed position on result page
-     * @param position
      */
     public void clickNeededNumOfResultLinks(int position){
         getSearcResultWebElements().get(position).click();
@@ -46,9 +44,6 @@ public class SearchResPage extends BasePage {
 
     /**
      * Search for the expected template (domain name) in results search link on numOfSearchPage  googleTest.pages
-     * @param expectedDomainName
-     * @param numOfSearchPage
-     * @return
      */
     public String getSearchLinkFromResults(String expectedDomainName, int numOfSearchPage){
         LogInformation.info(String.format("Search %s link on search results googleTest.pages(page: 1-5).",expectedDomainName));

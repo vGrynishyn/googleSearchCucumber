@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+<suite name="Test Suite Parallel"  parallel="methods" thread-count="2">
+    <test name="Test Cases">
+        <classes>
+            <class name="LocalTest">
+                <methods>
+                    <parameter name="pattern" value="automation"/>
+                    <parameter name="pagesNum" value="5"/>
+                    <parameter name="expectedDomainName" value="testautomationday.com"/>
+                    <include name="searchPatternAndCheckBrowserTitleTest"/>
+                    <include name="tryToFindExpectedDomainNameTest"/>
+                    <include name="checkIfGoogleSearchCanFindTestAutomationDayDomainTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
