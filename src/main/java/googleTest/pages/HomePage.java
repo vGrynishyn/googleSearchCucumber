@@ -34,4 +34,12 @@ public class HomePage extends BasePage {
         searchInput.sendKeys(pattern + Keys.ENTER);
         return new SearchResPage();
     }
+
+    public void closeWindow(){
+        browser.closeBrowser();
+    }
+
+    public void fillSearchField(String pattern){
+        searchInput.sendKeys(pattern + Keys.ENTER);
+    }
 }

@@ -7,18 +7,12 @@
     <groupId>test.epam</groupId>
     <artifactId>googleSearchCucumber</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+
+    <properties>
+        <URL>https://www.google.com.ua/</URL>
+        <PATTERN>automation</PATTERN>
+        <EXPECTED_DOMAIN_NAME>testautomationday.com</EXPECTED_DOMAIN_NAME>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -27,12 +21,12 @@
             <version>1.2.5</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-jvm-deps</artifactId>
-            <version>1.0.5</version>
-            <scope>test</scope>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>info.cukes</groupId>-->
+        <!--            <artifactId>cucumber-jvm-deps</artifactId>-->
+        <!--            <version>1.0.5</version>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-testng</artifactId>
@@ -52,11 +46,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>net.masterthought</groupId>
-            <artifactId>cucumber-reporting</artifactId>
-            <version>3.8.0</version>
-        </dependency>
-        <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>3.6.0</version>
@@ -66,21 +55,21 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.5</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.5</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-api</artifactId>
-            <version>3.11.0</version>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.slf4j</groupId>-->
+        <!--            <artifactId>slf4j-api</artifactId>-->
+        <!--            <version>1.7.5</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.slf4j</groupId>-->
+        <!--            <artifactId>slf4j-log4j12</artifactId>-->
+        <!--            <version>1.7.5</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.seleniumhq.selenium</groupId>-->
+        <!--            <artifactId>selenium-api</artifactId>-->
+        <!--            <version>3.11.0</version>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-firefox-driver</artifactId>
@@ -97,11 +86,6 @@
             <version>3.11.0</version>
         </dependency>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>26.0-jre</version>
-        </dependency>
-        <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>6.9.8</version>
@@ -113,5 +97,52 @@
             <version>2.10.0</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.20</version>
+                <configuration>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.8.10/aspectjweaver-1.8.10.jar"
+                    </argLine>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>1.8.10</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.0</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <URL>${URL}</URL>
+                        <PATTERN>${PATTERN}</PATTERN>
+                        <EXPECTED_DOMAIN_NAME>${EXPECTED_DOMAIN_NAME}</EXPECTED_DOMAIN_NAME>
+                    </systemPropertyVariables>
+<!--                    <environmentVariables>-->
+<!--                        <URL>${URL}</URL>-->
+<!--                        <PATTERN>${PATTERN}</PATTERN>-->
+<!--                        <EXPECTED_DOMAIN_NAME>${EXPECTED_DOMAIN_NAME}</EXPECTED_DOMAIN_NAME>-->
+<!--                    </environmentVariables>-->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
