@@ -7,11 +7,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class FireFox {
 
     private WebDriver driver;
-    public WebDriver getDriver(){
+
+    public WebDriver getDriver() {
         return this.driver;
     }
 
-    public FireFox(){
+    public FireFox() {
         WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
     }

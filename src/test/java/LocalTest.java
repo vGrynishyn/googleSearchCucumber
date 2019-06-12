@@ -7,19 +7,15 @@ import org.testng.annotations.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import static googleTest.BasePage.browser;
-
 @Listeners({TestListener.class})
-public class LocalTest{
+public class LocalTest {
 
-    private HomePage homePage;
     private String url;
     private String pattern;
     private String expectedDomainName;
 
     @BeforeTest
     public void beforeTest() {
-        homePage = new HomePage();
         url = System.getProperty("URL");
         pattern = System.getProperty("PATTERN");
         expectedDomainName = System.getProperty("EXPECTED_DOMAIN_NAME");
@@ -27,23 +23,24 @@ public class LocalTest{
 
     @AfterTest
     public void afterTest() {
-        homePage.closeWindow();
+        new HomePage().closeWindow();
     }
 
     @Test(priority = 1)
     @Parameters("pattern")
     public void searchPatternAndCheckBrowserTitleTest(@Optional("automation") String pattern) {
-        homePage
+        String browserTitlenew = new HomePage()
                 .openWebPage(url)
                 .searchPattern(pattern)
-                .clickNeededNumOfResultLinks(0);
-        Assert.assertTrue(homePage.getTitle().contains(pattern));
+                .clickNeededNumOfResultLinks(0)
+                .getTitle();
+        Assert.assertTrue(browserTitlenew.contains(pattern), "There ara not expected pattern in browser title");
     }
 
     @Test(priority = 2)
     @Parameters({"pattern", "pagesNum", "expectedDomainName"})
-    public void tryToFindExpectedDomainNameTest(@Optional("automation") String pattern, @Optional("5") int pagesNum, @Optional("testautomationday.com") String expectedDomainName) {
-        String actualLink = homePage
+    public void tryToFindExpectedDomainNameTest(@Optional("automationday") String pattern, @Optional("5") int pagesNum, @Optional("testautomationday.com") String expectedDomainName) {
+        String actualLink = new HomePage()
                 .openWebPage(url)
                 .searchPattern(pattern)
                 .getSearchLinkFromResults(expectedDomainName, pagesNum);
@@ -57,15 +54,14 @@ public class LocalTest{
         Assert.assertTrue(foundLink.contains(expectedDomainName), String.format("Could not find expected domain name '%s' in '%s' link.", expectedDomainName, foundLink));
     }
 
-    @DataProvider(name = "foundLinks", parallel = false)
+    @DataProvider(name = "foundLinks", parallel = true)
     public Object[][] getLinks() {
-        ArrayList<String> links = homePage
+        ArrayList<String> links = new HomePage()
                 .openWebPage(url)
                 .searchPattern(pattern + "day")
                 .getResultLinks();
         Collection<Object[][]> data = new ArrayList();
         links.forEach(item -> ((ArrayList) data).add(new Object[]{item}));
-        browser.closeBrowser();
         return data.toArray(new Object[0][]);
     }
 }

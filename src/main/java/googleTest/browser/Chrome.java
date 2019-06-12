@@ -9,11 +9,11 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class Chrome {
     private WebDriver driver;
 
-    public WebDriver getDriver(){
+    public WebDriver getDriver() {
         return this.driver;
     }
 
-    public Chrome(){
+    public Chrome() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments(Driver.BrowserType.findByName(Driver.BrowserType.CHROME.getName()).getOptions());

@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static googleTest.BasePage.browser;
+import static googleTest.pages.BasePage.browser;
 
 @CucumberOptions(
         features = "src/test/resources/features",

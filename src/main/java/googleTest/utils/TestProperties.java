@@ -18,8 +18,7 @@ public class TestProperties {
 
             prop.load(file);
             out = prop.getProperty(property);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Exception: " + e);
         } finally {
             try {

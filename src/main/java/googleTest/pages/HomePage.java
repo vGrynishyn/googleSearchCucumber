@@ -1,6 +1,5 @@
 package googleTest.pages;
 
-import googleTest.BasePage;
 import googleTest.utils.LogInformation;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
@@ -16,7 +15,7 @@ public class HomePage extends BasePage {
      * Open webpage
      */
     @Step()
-    public HomePage openWebPage(String url){
+    public HomePage openWebPage(String url) {
         LogInformation.info(String.format("Open '%s' address", url));
 
         browser.openWebPage(url);
@@ -29,17 +28,17 @@ public class HomePage extends BasePage {
      * Search for specified pattern
      */
     @Step()
-    public SearchResPage searchPattern(String pattern){
+    public SearchResPage searchPattern(String pattern) {
         LogInformation.info(String.format("Search for '%s' pattern", pattern));
         searchInput.sendKeys(pattern + Keys.ENTER);
         return new SearchResPage();
     }
 
-    public void closeWindow(){
+    public void closeWindow() {
         browser.closeBrowser();
     }
 
-    public void fillSearchField(String pattern){
+    public void fillSearchField(String pattern) {
         searchInput.sendKeys(pattern + Keys.ENTER);
     }
 }

@@ -23,13 +23,13 @@ public class Driver {
             return (String) values[0];
         }
 
-        public String[] getOptions(){
+        public String[] getOptions() {
             return (String[]) values[1];
         }
 
-        public static BrowserType findByName(String name){
-            for(BrowserType v : values()){
-                if( v.getName().equals(name)){
+        public static BrowserType findByName(String name) {
+            for (BrowserType v : values()) {
+                if (v.getName().equals(name)) {
                     return v;
                 }
             }
@@ -38,26 +38,26 @@ public class Driver {
     }
 
     public static org.openqa.selenium.WebDriver getWebDriver() {
-        if (webDriver.get() == null){
+        if (webDriver.get() == null) {
             BrowserType type = BrowserType.findByName(TestProperties.get("browser"));
-            switch (type){
-                case FIREFOX:{
+            switch (type) {
+                case FIREFOX: {
                     setWebDriver(new FireFox().getDriver());
                     break;
                 }
-                case CHROME:{
+                case CHROME: {
                     setWebDriver(new Chrome().getDriver());
                     break;
                 }
             }
             webDriver.get().manage().timeouts().implicitlyWait(Long.parseLong(TestProperties.get("defaultImplicitWait")), TimeUnit.SECONDS);
-            webDriver.get().manage().timeouts().pageLoadTimeout(Long.parseLong(TestProperties.get("pageLoadTimeout")),TimeUnit.SECONDS);
+            webDriver.get().manage().timeouts().pageLoadTimeout(Long.parseLong(TestProperties.get("pageLoadTimeout")), TimeUnit.SECONDS);
         }
         return webDriver.get();
     }
 
-    public static org.openqa.selenium.WebDriver getWebDriver(boolean createNewDriver){
-        if (!createNewDriver){
+    public static org.openqa.selenium.WebDriver getWebDriver(boolean createNewDriver) {
+        if (!createNewDriver) {
             return webDriver.get();
         }
         return getWebDriver();

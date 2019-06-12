@@ -1,4 +1,4 @@
-package googleTest;
+package googleTest.pages;
 
 import googleTest.utils.Browser;
 import org.openqa.selenium.support.PageFactory;
@@ -9,11 +9,11 @@ public abstract class BasePage {
 
     public static Browser browser = new Browser();
 
-    public BasePage(){
+    public BasePage() {
         PageFactory.initElements(getWebDriver(), this);
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return browser.getTitle();
     }
 }
